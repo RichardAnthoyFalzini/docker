@@ -1,0 +1,19 @@
+######
+# start from latest centos
+FROM centos:latest
+
+####
+# install required python package
+### make python3 default 
+
+RUN rm /usr/bin/python && ln -fs /usr/bin/python3 /usr/bin/python && yum install -y python3-scipy python3-numpy python3-mpi4py
+
+###
+# configure entry point
+###
+WORKDIR /app
+
+###
+# copy content of folder ./ into /app
+###
+ADD . /app
